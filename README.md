@@ -11,7 +11,7 @@ GH Action to deploy on PR plans below:
 ```
 $SSH_KEY > ~/.ssh/gh_action
 chmod 400 ~/.ssh/gh_action
-rsync -are "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/gh_action" ./publicc $SSH_USER_AND_ADDRESS:public_html/blog/
+rsync -are "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/gh_action" ./public/ $SSH_USER_AND_ADDRESS:public_html/blog/
 
 ```
 

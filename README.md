@@ -19,3 +19,7 @@ rsync -are "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/gh_action" ./public/ $
 
 ```
 
+### Content
+
+**Remember!** When creating content, don't do it manually, use `hugo new content posts/filename.md`.
+

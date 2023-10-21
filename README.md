@@ -3,7 +3,7 @@ personal blog written in markdown and generated using Hugo
 
 ### CI/CD
 
-GH Action to deploy on PR plans below:
+GH Action to deploy on tagged commits; plans below:
 
 - needs to use ssh and rsync
 - needs to auto-add host to known-hosts (nothing is secret in this repo, it's a public static site blog so there is no security risk here but should be remembered)

@@ -23,3 +23,10 @@ rsync -are "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/gh_action" ./public/ $
 
 **Remember!** When creating content, don't do it manually, use `hugo new content posts/filename.md`.
 
+### Cloning
+
+When cloning the repo ensure you use the `--recurse-submodules` switch.
+
+To update the submodule you would run `git submodule update`
+
+Not sure really how frequently that would be needed of course, it's only for the theme which likely doesn't git updated too often.

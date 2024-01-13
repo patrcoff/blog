@@ -130,9 +130,9 @@ This is one of the key purposes of defining an API. The maintainers of the libra
 
 Now, in the background, awesomemaths have been working very hard to fix the bug in the `add_numbers` function. They also want you to know that they're very sorry for _breaking_ their public API, they promise it won't happen again.
 
-They've realised that their implementation didn't account for lists with _odd_ numbers of values in them, causing the index out of range error. They began modifying their code to handle the scenario but whilst doing so, realised a better way to implement the feature. Instead of iterating through the list of numbers in steps of 2, adding the numbers in the list at the index of the step, and the step-plus-one (don't worry if that doesn't make sense, it was intentionally obtuse), they could instead iterate through the list of numbers and simply add each to a running total, so that's what they did.
+They've realised that their implementation didn't account for lists with _odd_ numbers of values in them, causing the index out of range error. They began modifying their code to handle the scenario but whilst doing so, realised a better way to implement the feature. Instead of iterating through the list of numbers in steps of 2, adding the numbers in the list at the index of the step, and the step-plus-one using the internal _add_two_numbers function (don't worry if that doesn't make sense, it was intentionally obtuse), they could instead iterate through the list of numbers and simply add each to a running total, so that's what they did. They no longer need to use _add_two_nunbers and if they don't use it anywhere else in their code, they could safely remove this function completely from the library. As the user is never able to call this function directly, they'll not need to change their code after _add_two_numbers is deleted.
 
-We don't need to see that though, in their communications they simply state:
+The users don't even need to see any of that, in the library's release communications they simply state:
 
 `Release 1.3.32 - bug fix in add_numbers function to fix an issue when adding odd sized lists of numbers...`
 

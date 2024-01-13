@@ -4,7 +4,7 @@ date = 2023-10-20T15:25:08+01:00
 draft = true
 +++
 
-This post is one for the beginners; those early in their journey through the Tech industry or who are simply interested in the topic. I'll not be going into too much detail but will include some code examples to illustrate some concepts, specifically in Python as it is considered a highly readable langauge. If you know nothing about coding though, don't worry, I'll be keeping the examples simple and will include explanations of the code so nobody gets lost. I hope to create a long running series of posts similar to this, aimed at beginners/newcomers to tech or specific technologies, intending to demystify the various concepts, terminology and gratuitous acronyms thrown about by those 'in-the-know'. Look out for more posts coming soon!
+This post is one for the beginners; those early in their journey through the Tech industry or who are simply interested in the topic. I'll not be going into too much detail but will include some code examples to illustrate some concepts, specifically in Python as it is considered a highly readable langauge. If you know nothing about coding though, don't worry, I'll be keeping the examples simple and will include explanations of the key parts of the code so nobody gets lost. I hope to create a long running series of posts similar to this, aimed at beginners/newcomers to tech or specific technologies, intending to demystify the various concepts, terminology and gratuitous acronyms thrown about by those 'in-the-know'. Look out for more posts coming soon!
 
 ## What is an API then?
 
@@ -117,7 +117,17 @@ As we expect, this does indeed print the correct value 30.
 
 We don't need to know how this multiplication is implemented. If you look at the 'library' code, you see it actually performs multiplication solely with addition and a loop, in essense, taking a running total starting at 0 and adding number 'b' to it 'a' times. A strange way to perform addition in a high level language for sure, but not our problem. Perhaps in our imaginary world, doing it this way is faster and we're outsourcing the performance tuning to the library maintainers. (This is obviously not true of course but work with me!)
 
+This is one of the key purposes of defining an API. The maintainers of the library can change how they implement `multiply_two_numbers` at any time without breaking our code which calls it, they just have to make sure that when we use their function, 5 x 6 = 30, or 20 x 4 = 80 etc. This allows them to improve their code, perhaps increasing performance via new implementations without their consumers needing to make any changes to their code.
 
+Now, in the background, awesomemaths have been working very hard to fix the bug in the `add_numbers` function. They also want you to know that they're very sorry for breaking their public API, they promise it won't happen again.
+
+They've realised that their implementation didn't account for lists with _odd_ numbers of values in them, causing the index out of range error. They began modifying their code to handle the scenario but whilst doing so, realised a better way to implement the feature. Instead of iterating through the list of numbers in steps of 2, adding the numbers in the list at index of the step and the step plus one (don't worry if that doesn't make sense, it was intentionally obtuse), they could instead iterate through the list of numbers and simply add each to a running total, so that's what they did.
+
+We don't need to see that though, in their communications they simply state:
+
+`Release 1.3.32 - bug fix in add_numbers function to fix an issue when adding odd sized lists of numbers...`
+
+They don't go into the implementation details because we (the consumers) don't care!
 
 
 ## HTTP based API e.g. REST

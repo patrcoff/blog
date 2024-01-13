@@ -93,6 +93,33 @@ print(awsomemaths.add_numbers(numbers))
 
 ![Alt text](image.png)
 
+Now, asside from generally terrible and unsafe code, there is an explicit bug in the library we are using, which we will now find out by running `awsomemaths.add_numbers([1,2,3,4,5])`. This results in the error `IndexError: list index out of range`, but the error isn't in our calculator code but rather in the library itself - we are not responsible for fixing it! Bonus points if you know what the bug is but that's outside of the scope of this article really.
+
+Being good digital citezens however, we report the bug and give the team at awesomemaths the benefit of the doubt.
+
+We move on (you could argue foolishly) to investigate another one of the public functions of the library, `multiply_two_numbers`.
+
+This function takes in two numbers and returns their product. How this is achieved is not important to us, we just expect it to work (ideally without bugs this time!).
+
+We could call it from our code like this:
+
+```python
+import awesomemaths
+
+print('5 x 6 =')
+print(awesomemaths.multiply_two_numbers(5,6))
+...
+```
+
+As we expect, this does indeed print the correct value 30.
+
+![Alt text](image-1.png)
+
+We don't need to know how this multiplication is implemented. If you look at the 'library' code, you see it actually performs multiplication solely with addition and a loop, in essense, taking a running total starting at 0 and adding number 'b' to it 'a' times. A strange way to perform addition in a high level language for sure, but not our problem. Perhaps in our imaginary world, doing it this way is faster and we're outsourcing the performance tuning to the library maintainers. (This is obviously not true of course but work with me!)
+
+
+
+
 ## HTTP based API e.g. REST
 
 

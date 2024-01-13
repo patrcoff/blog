@@ -15,31 +15,40 @@ So let's just go out and define it to begin with.
 > API - Application Programming Interface
 > _"API stands for Application Programming Interface. In the context of APIs, the word Application refers to any software with a distinct function. Interface can be thought of as a contract of service between two applications. This contract defines how the two communicate with each other using requests and responses."_ - Amazon Web Services.
 
-The above quote from AWS does a good job defining the term in relatively plain English and this is the core definition we'll be basing the rest of this post on.
+The above quote from AWS does a good job defining the term in relatively plain English, especially the first half of it. The last sentence hints more towards a specific kind of API which we'll get into later but overall this is the core definition we'll be basing the rest of this post on.
 
-But for many of you, this is likely still going to be a little vague or confusing, depending on your level of experience working with software systems.
+But for many of you, this is likely still going to be a little abstract or confusing, depending on your level of experience working with software systems or with this type of industry language.
 
-Crucially, I have found in my experience that this term is often used to mean two specific catagories of API, often with the assumption that the listener/reader simply knows from context which is being referred to.
+Crucially, I have found in my experience that this term is often used to mean one of two specific catagories of API, often with the assumption that the listener/reader simply knows from context which is being referred to.
 
-Here I need to introduce the idea of 'REST APIs'(and other HTTP based API standards) as well as software library APIs, but more details will follow. For now though, just know that often when people refer to an 'API', what they really mean is a 'REST API', but other times they may mean a software library's API. Really, there is a hierarchy of definitions here, where the term API has its general definition (the AWS definition above), and more context specific definitions exist underneath this, such as RESTful APIs. The problem is people tend to use the term API synonimously to mean any of the above which is where confusion can originate. It's sort of like how Americans tend to call all insects 'bugs' but in reality, bugs are a specific order called 'hemipteran'. _'The formation of the mouthparts into the elongated rostrum is unique to the Hemiptera and is not found even in other groups with sucking mouthparts.' [ref](https://www.royensoc.co.uk/understanding-insects/classification-of-insects/hemiptera/) Beetles are yet another order, _coleoptera_. Note, there are also differences colloquially between different English language speakers too, for example people in the UK use the term bug less often to describe all insects than North Americans do. Why am I talking about invertabrites so much? I think this perfectly illustrates the problem I am really getting at - language is _hard_ and cultivating shared meaning is even harder. That's why I'm writing this post, to help those going to a bug convention not slip up and mention anythig about (_chewing mouthparts_)[(https://www.woodlandtrust.org.uk/blog/2023/06/difference-between-bugs-and-beetles/)]
+Here I need to introduce the idea of 'REST APIs'(and other HTTP based API standards) as well as software library APIs, but more details will follow. For now though, just know that often when people refer to an 'API', what they really mean is a 'REST API', but other times they may mean a software library's API. Really, there is a hierarchy of definitions here, where the term API has its general definition (the AWS definition above), and more context specific definitions exist underneath this, such as RESTful APIs. The problem is people tend to use the term API synonimously to mean any of the above which is where confusion can originate. 
 
-But back to APIs, REST APIs are APIs, software library APIs are also APIs but the two are quite different from each other and exist in different contexts.
+It's sort of like how Americans tend to call _all_ insects 'bugs' but in reality, 'bugs' are a specific order of insect called 'hemipteran'. _'The formation of the mouthparts into the elongated rostrum is unique to the Hemiptera and is not found even in other groups with sucking mouthparts.'_ [ref](https://www.royensoc.co.uk/understanding-insects/classification-of-insects/hemiptera/) Beetles are yet another order, _coleoptera_. Note, there are also differences colloquially between different English language speakers too, for example people in the UK use the term bug less often to describe all insects than North Americans do, to add to confusion. Why am I talking about invertabrites so much? I think this perfectly illustrates the problem I am really getting at - language is _hard_ and cultivating shared meaning is even harder. That's why I'm writing this post, to help those going to a bug convention not slip up and mention anythig about (_chewing mouthparts_)[(https://www.woodlandtrust.org.uk/blog/2023/06/difference-between-bugs-and-beetles/)]
+
+But back to APIs, REST APIs are APIs, software library APIs are also APIs but the two are different from each other and exist in different contexts. Often people talking about one of these contexts may use the term API to explain something but what they are actually talking about is something related more to the specific type of API they're using, such as something related to the HTTP protocol.
 
 
 ## Software Library API
 
-Depending on your experience or what area you work in, you may or _may not_ have much exposure to this category of API. In my career this category was introduced to me later than rest APIs and so caused some initial confusion when hearing the term.
+Depending on your experience or what area you work in, you may or _may not_ have much exposure to this category of API. In my career this category was introduced to me later than REST APIs and so caused some initial confusion when hearing the term.
 
-A software library API is an abstraction between the internal workings of the software library and the _consumer_ of the library. What I mean by this is it's the contract (remember our core definition) between how the software library authors and those who use it in a wider software project, regardless of how the software library implements its functionality. You can think of it as a restaurant or cafe - you, the consumer, know how it works. You go in, ask to be seated at a table, a waitor comes to ask you what you would like to drink, eat, your preferences (i.e. rare, medium...) and they then bring this information to the back of house. You don't see what goes on behind there. You don't need to know what temperature your steak is fried at. Youd don't need to know what order the food is cooked in. You don't need to know where the pots and pans are kept. You just wait and then receive your food.
+A software library's API acts as an abstraction between the internal workings of the software library and the _consumer_ of the library. What I mean by this is it's the contract (remember our core definition) between how the software library authors and those who use it in a wider software project, regardless of how the software library implements its functionality. 
+
+Let's take the analogy of a restaurant or cafe - you, the consumer, know how to be a customer. You go in, ask to be seated at a table, a waitor comes to ask you what you would like to drink, eat, your preferences (i.e. rare, medium...) and they then bring this information to the back of house. You don't see what goes on behind there. You don't need to know what temperature your steak is fried at. Youd don't need to know what order the food is cooked in or the name of the chefs. You don't need to know where the pots and pans are kept. You just wait and then receive your food. 
+
+You can also eat anywhere that implements this same contract of server/customer behaviour. You can easily eat at another restaurant which cooks its food in a completely different way, this doesn't have to change how you interact with it, but behind the scenes it could be working completely differently inside the kitchen.
+
+
 
 To give a more technical example, we'll take a look at some code. The topic of designing, writing, packaging software libraries / modules / packages is vast and complex so we'll be keeping this example simple and far from best practice, so forgive the simplicity if you do have experience writing code, it is necessary to keep this accessible. It is also going to be a rather arbitrary example to keep it simple and focus on the key points.
 
-Let's say we're the maintainers of a software library for performing mathematical calculations. We're defined a large range of functions available publically to the consumers of the library, backed up by some internal functions not intended to be seen by the user. The consumer doesn't need to know the inner workings of our functions, they just need to trust the described behaviour will always happen when using the public functions. Lastly, it is also intentionally obtuse code so don't worry if it does not make sense - this would not be a good library!
+Let's say we're the maintainers of a software library for performing mathematical calculations. We've defined a large range of functions available publically to the consumers of the library, backed up by some internal functions not intended to be seen by the user. The consumer doesn't need to know the inner workings of our functions, they just need to trust the described behaviour will always happen when using the public functions. They also need to know that what we change behind the scenes won't make their code which uses our library break if they update the versions. Note, this code is also intentionally obtuse so don't worry if it doesn't make sense - this would not be a _good_ library!
 
 
 ```python
 #awesomemaths.py
 
+# private function, not for users!
 def _add_two_numbers(a, b):
     return a + b
 
@@ -58,14 +67,14 @@ def divide_x_by_y(x,y):
     ...
 ```
 
-Our python file contains numerous functions, some of which are intended to be used by our consumers, some of which aren't. For example, `_add_two_numbers` is not intended to be used directly, instead, the consumer will pass a list of numbers to `add_numbers` to sum any number of numbers together.
+Our python file contains numerous functions, some of which are intended to be used by our consumers, some of which aren't. For example, `_add_two_numbers` is not intended to be used directly, instead, the consumer will pass a list of numbers to `add_numbers` to sum any quantity of numbers together.
 
-> In Python, `_` before variable, function or method names indicates a private item by convention. Nothing built into the language actually stops your users from accessing them but it serves as indicator to other developers that they shouldn't be using them outside of the module/library.
+> In Python, `_` before variable, function or method names indicates a private item by convention. It doesn't actually have any functional behaviour, it is purely convention - controlling what is and isn't importable from the module is done via a different mechanism but it is useful to use the convention to make collaboration easier between developers.
 
-How we enforce the intended use (the API) of our library varies from language to language and from different coding practices and patterns. OOP zealots will make heavy use of classes with public and private attributes, methods etc, others may simply place all their 'public' code in a particular place and _only_ document its usage, leaving the rest 'hidden' to the user. In Python, there are also details about defining what gets imported with the `import` statement which I'll not go into detail here as it is out of scope. There is much less standardisation here than with the likes of REST APIs which we'll look at next. Here, we are simply going opt to only document the functions we intend our consumers to use in our library's public documentation and usage guide.
+How we enforce the intended use (the API) of our library varies from language to language and between different coding practices and patterns. In Python, we define what can be imported via the `import` statement using the `__init__.py` file but I'll not go into detail here as it is out of scope of the post. There is much less standardisation here than with the likes of REST APIs, which are language agnostic. We'll discuss them later. In our example, we're simply providing only our 'public' functions to the import feature of Python and we are only providing information about these functions in our library documentation.
 
 ```#README.md
-Welcome to the awesomemaths library. We provide the best calculations around with easy to understand uses. See our API documentation below:
+Welcome to the awesomemaths library. We provide the best calculations around with easy to understand usage. See our API documentation below:
 
 - add_numbers(a, b) -> function to add a list of numbers. This function expects a list of integers and returns their sum.
 
@@ -77,7 +86,7 @@ Welcome to the awesomemaths library. We provide the best calculations around wit
 Notice how our 'docs' don't mention the `_add_two_numbers` function - this is an implementation specific function and the consumer shouldn't be using it!
 
 
-    Now let's switch hats, we're the user of this library and we're building a calculator app using some GUI framework for our given platform, but first, we're testing out the library just by printing some calculations to make sure we know how to use it.
+    Now let's switch hats, we're the user of this library and we're building a calculator app using some GUI framework for our given platform, but first, we're testing out the library just by 'printing' some calculations to make sure we know how to use it.
 
 We have read 'the docs' and know that we can use the `add_numbers` function to get the sum of a list of numbers, which we think will be useful in our calculator.
 
@@ -93,7 +102,7 @@ print(awsomemaths.add_numbers(numbers))
 
 ![Alt text](image.png)
 
-Now, asside from generally terrible and unsafe code, there is an explicit bug in the library we are using, which we will now find out by running `awsomemaths.add_numbers([1,2,3,4,5])`. This results in the error `IndexError: list index out of range`, but the error isn't in our calculator code but rather in the library itself - we are not responsible for fixing it! Bonus points if you know what the bug is but that's outside of the scope of this article really.
+Now, asside from being generally terrible and unsafe code (which we as the library user haven't seen anyway), there is an explicit bug in the library we are using, which we will now find out by running `awsomemaths.add_numbers([1,2,3,4,5])`. This results in the error `IndexError: list index out of range`, but the error isn't from our calculator code but rather in the library itself - we are not responsible for fixing it! Bonus points if you know what the bug is.
 
 Being good digital citezens however, we report the bug and give the team at awesomemaths the benefit of the doubt.
 
@@ -111,17 +120,17 @@ print(awesomemaths.multiply_two_numbers(5,6))
 ...
 ```
 
-As we expect, this does indeed print the correct value 30.
+As we expect, this does indeed print the correct value, 30.
 
 ![Alt text](image-1.png)
 
-We don't need to know how this multiplication is implemented. If you look at the 'library' code, you see it actually performs multiplication solely with addition and a loop, in essense, taking a running total starting at 0 and adding number 'b' to it 'a' times. A strange way to perform addition in a high level language for sure, but not our problem. Perhaps in our imaginary world, doing it this way is faster and we're outsourcing the performance tuning to the library maintainers. (This is obviously not true of course but work with me!)
+We don't need to know how this multiplication is implemented. If you look at the 'library' code, you see it actually performs multiplication solely with addition inside a loop. Essentially, it takes a running total starting at 0 and adds number 'b' to it for each step in the loop. The loop runs for 'a' steps. A strange way to perform multiplication in a high level language for sure, but not our problem. Perhaps in our imaginary world, doing it this way is faster and we're outsourcing the performance tuning to the library maintainers. (This is obviously not true of course but work with me!)
 
-This is one of the key purposes of defining an API. The maintainers of the library can change how they implement `multiply_two_numbers` at any time without breaking our code which calls it, they just have to make sure that when we use their function, 5 x 6 = 30, or 20 x 4 = 80 etc. This allows them to improve their code, perhaps increasing performance via new implementations without their consumers needing to make any changes to their code.
+This is one of the key purposes of defining an API. The maintainers of the library can change _how_ they implement `multiply_two_numbers` at any time without breaking our code which calls it, they just have to make sure that when we use their function, 5 x 6 = 30, or 20 x 4 = 80 etc. This allows them to improve their functionality, perhaps increasing performance via new implementations without their consumers needing to make any changes to their code.
 
-Now, in the background, awesomemaths have been working very hard to fix the bug in the `add_numbers` function. They also want you to know that they're very sorry for breaking their public API, they promise it won't happen again.
+Now, in the background, awesomemaths have been working very hard to fix the bug in the `add_numbers` function. They also want you to know that they're very sorry for _breaking_ their public API, they promise it won't happen again.
 
-They've realised that their implementation didn't account for lists with _odd_ numbers of values in them, causing the index out of range error. They began modifying their code to handle the scenario but whilst doing so, realised a better way to implement the feature. Instead of iterating through the list of numbers in steps of 2, adding the numbers in the list at index of the step and the step plus one (don't worry if that doesn't make sense, it was intentionally obtuse), they could instead iterate through the list of numbers and simply add each to a running total, so that's what they did.
+They've realised that their implementation didn't account for lists with _odd_ numbers of values in them, causing the index out of range error. They began modifying their code to handle the scenario but whilst doing so, realised a better way to implement the feature. Instead of iterating through the list of numbers in steps of 2, adding the numbers in the list at the index of the step, and the step-plus-one (don't worry if that doesn't make sense, it was intentionally obtuse), they could instead iterate through the list of numbers and simply add each to a running total, so that's what they did.
 
 We don't need to see that though, in their communications they simply state:
 
@@ -129,7 +138,19 @@ We don't need to see that though, in their communications they simply state:
 
 They don't go into the implementation details because we (the consumers) don't care!
 
+In the same release, they might have changed the implementation of multiply_two_numbers to improve performance. We don't need to understand how but we get the benefits for free!
+
+Going forward, we hope awesomemaths keep up the good work, introduce no further bugs but _more importantly_ introduce no functionality that requires we change _our_ code.
+
 
 ## HTTP based API e.g. REST
 
+
+Now, potentially more often these days, when people are casually talking about 'APIs', they are talking about REST APIs or other web based APIs. Within this, there are a range of specifications for such web APIs, but REST is the most well known standard so we'll mainly discuss it here.
+
+The crucial difference here is instead of talking about two pieces of software talking to each other directly, on the same compute resource, here, one system talks to another over a network.
+
+This obviously introduces an entirely different context in which to think about this _'contract'_ between our software systems. This is where I find talk about these types of 'APIs' often bleeds into other concepts and meanings more related to HTTP or networking for example.
+
+> 'A REST API is an API that conforms to the design principles of the REST, or representational state transfer architectural style.' - [IBM](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwi6ut6vrNuDAxXxU0EAHa-ABeAQFnoECBwQAw&url=https%3A%2F%2Fwww.ibm.com%2Ftopics%2Frest-apis%23%3A~%3Atext%3Dthe%2520next%2520step-%2CWhat%2520is%2520a%2520REST%2520API%253F%2Crepresentational%2520state%2520transfer%2520architectural%2520style.&usg=AOvVaw0RvExLMZRbZvSAMnz1xJ9-&opi=89978449)
 

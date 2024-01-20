@@ -1,5 +1,5 @@
 +++
-title = 'So_what_is_an_api'
+title = 'So What is an API'
 date = 2023-10-20T15:25:08+01:00
 draft = true
 +++
@@ -12,7 +12,7 @@ If you're reading this, you've presumably heard the term API banded about but no
 
 So let's just go out and define it to begin with.
 
-> API - Application Programming Interface
+
 > _"API stands for Application Programming Interface. In the context of APIs, the word Application refers to any software with a distinct function. Interface can be thought of as a contract of service between two applications. This contract defines how the two communicate with each other using requests and responses."_ - Amazon Web Services.
 
 The above quote from AWS does a good job defining the term in relatively plain English, especially the first half of it. The last sentence hints more towards a specific kind of API which we'll get into later but overall this is the core definition we'll be basing the rest of this post on.
@@ -23,7 +23,11 @@ Crucially, I have found in my experience that this term is often used to mean on
 
 Here I need to introduce the idea of 'REST APIs'(and other HTTP based API standards) as well as software library APIs, but more details will follow. For now though, just know that often when people refer to an 'API', what they really mean is a 'REST API', but other times they may mean a software library's API. Really, there is a hierarchy of definitions here, where the term API has its general definition (the AWS definition above), and more context specific definitions exist underneath this, such as RESTful APIs. The problem is people tend to use the term API synonimously to mean any of the above which is where confusion can originate. 
 
-It's sort of like how Americans tend to call _all_ insects 'bugs' but in reality, 'bugs' are a specific order of insect called 'hemipteran'. _'The formation of the mouthparts into the elongated rostrum is unique to the Hemiptera and is not found even in other groups with sucking mouthparts.'_ [ref](https://www.royensoc.co.uk/understanding-insects/classification-of-insects/hemiptera/) Beetles are yet another order, _coleoptera_. Note, there are also differences colloquially between different English language speakers too, for example people in the UK use the term bug less often to describe all insects than North Americans do, to add to confusion. Why am I talking about invertabrites so much? I think this perfectly illustrates the problem I am really getting at - language is _hard_ and cultivating shared meaning is even harder. That's why I'm writing this post, to help those going to a bug convention not slip up and mention anythig about (_chewing mouthparts_)[(https://www.woodlandtrust.org.uk/blog/2023/06/difference-between-bugs-and-beetles/)]
+It's sort of like how Americans tend to call _all_ insects 'bugs' but in reality, 'bugs' are a specific order of insect called 'hemipteran'. 
+
+> _'The formation of the mouthparts into the elongated rostrum is unique to the Hemiptera and is not found even in other groups with sucking mouthparts.'_ - [Royal Entomological Society](https://www.royensoc.co.uk/understanding-insects/classification-of-insects/hemiptera/) 
+
+Beetles are yet another order, _coleoptera_. All Beetles are insects, but no beetles are bugs... Note, there are also differences colloquially between different English language speakers too, for example people in the UK use the term bug less often to describe all insects than North Americans do, to add to confusion. Why am I talking about invertabrites so much? I think this perfectly illustrates the problem I am really getting at - language is _hard_ and cultivating shared meaning is even harder. That's why I'm writing this post, to help those going to a bug convention not slip up and mention anythig about [_chewing mouthparts_](https://www.woodlandtrust.org.uk/blog/2023/06/difference-between-bugs-and-beetles/)
 
 But back to APIs, REST APIs are APIs, software library APIs are also APIs but the two are different from each other and exist in different contexts. Often people talking about one of these contexts may use the term API to explain something but what they are actually talking about is something related more to the specific type of API they're using, such as something related to the HTTP protocol.
 
@@ -36,7 +40,7 @@ A software library's API acts as an abstraction between the internal workings of
 
 Let's take the analogy of a restaurant or cafe - you, the consumer, know how to be a customer. You go in, ask to be seated at a table, a waitor comes to ask you what you would like to drink, eat, your preferences (i.e. rare, medium...) and they then bring this information to the back of house. You don't see what goes on behind there. You don't need to know what temperature your steak is fried at. Youd don't need to know what order the food is cooked in or the name of the chefs. You don't need to know where the pots and pans are kept. You just wait and then receive your food. 
 
-You can also eat anywhere that implements this same contract of server/customer behaviour. You can easily eat at another restaurant which cooks its food in a completely different way, this doesn't have to change how you interact with it, but behind the scenes it could be working completely differently inside the kitchen.
+You can also easily eat at this restaurant after they complete a major renovation of their kitchens. This doesn't change how you interact with the resaurant or the servers etc, but the food might be produced in a different way now, perhaps more efficiently wasting fewer resources such as water and energy.
 
 
 

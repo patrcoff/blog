@@ -44,7 +44,7 @@ Reading Robbe's post, we understand:
 - information about clientId, issuer, audience and other OAuth/Managed Identity concepts (though not in huge detail)
 - how to set up another logic app to use as the trigger caller who is to be authenticated
 
-> Some of this is going to be re-covered in this post for completeness and clarity but I want to make a point of thanking Robbe for his post outlining much of this information and doing a lot of the leg-work which I cannot claim to have done all myeslf.
+> Some of this is going to be re-covered in this post for completeness and clarity but I want to make a point of thanking Robbe for his post and the information he has made available - I certainly cannot take credit for all of the information presented in this post!
 
 
 The first problem is Logic App Standard doesn't expose the Authentication options for the App Service resource which Logic App Standard runs on behind the scenes. This is true via the portal but crucially also via the Azurerm Terraform provider. As we're working in an Enterprise environment, we must deploy all of our infrastructure for our client via IAC so whatever solutions we come up with, must be possible to define in code.

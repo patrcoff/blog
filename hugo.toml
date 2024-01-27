@@ -1,4 +1,4 @@
-baseURL = 'https://coffeystudio.com/blog'
+baseURL = 'https://coffeystudio.com/'
 languageCode = 'en-us'
 title = 'CoffeyBlog'
 

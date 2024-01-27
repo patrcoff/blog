@@ -11,7 +11,7 @@ GH Action to deploy on tagged commits; plans below:
 
 - git checkout - must include sub-repos
 - run hugo
-- official azure static sites deploy action from content folder
+- official azure static sites deploy action from public folder
 
 ~~apt install hugo~~
 ~~hugo~~

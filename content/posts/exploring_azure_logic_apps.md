@@ -1,10 +1,8 @@
 +++
-title = 'Exploring_azure_logic_apps'
+title = 'Exploring Azure Logic Apps (Standard)'
 date = 2024-01-04T21:20:26Z
 draft = true
 +++
-
-# Exploring Azure Logic Apps (Standard)
 
 ## Background, Deploying with Terraform and Working with Private Networks (Part 1)
 
@@ -27,7 +25,8 @@ Logic Apps are an Azure Service which provides a no-code/low-code solution for i
 
 
 
-> [!INFO] In Microsoft's Words
+> [!INFO] 
+> In Microsoft's Words
 > Azure Logic Apps is a cloud platform where you can create and run automated workflows with little to no code. By using the visual designer and selecting from prebuilt operations, you can quickly build a workflow that integrates and manages your apps, data, services, and systems.
 
 

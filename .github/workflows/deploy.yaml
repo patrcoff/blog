@@ -14,12 +14,9 @@ env:
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+    paths:
+      - 'content/**'
+
 
 permissions:
   issues: write
